@@ -1,0 +1,32 @@
+name: Build Fabric Mod
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository herunterladen
+        uses: actions/checkout@v4
+
+      - name: Java 17 installieren
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Gradle Rechte geben
+        run: chmod +x gradlew
+
+      - name: Mod builden
+        run: ./gradlew build
+
+      - name: Mod hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: FabricMod
+          path: build/libs/*.jar
