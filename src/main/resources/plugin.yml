@@ -1,0 +1,5 @@
+
+name: SadServerPlugin
+main: de.sadserver.SadServerPlugin
+version: 1.0
+api-version: 1.20
